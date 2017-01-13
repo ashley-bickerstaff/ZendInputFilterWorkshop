@@ -1,6 +1,11 @@
 {
     "name": "pawcode/zend-inputfilter-workshop",
     "description": "A workshop to get started with Zend Validators, Filters and InputFilters",
+    "autoload": {
+        "psr-4": {
+            "ZendInputFilterWorkshop\\": "src"
+        }
+    },
     "require": {
         "zendframework/zend-inputfilter": "^2.7",
         "phpunit/phpunit": "^5.7"
