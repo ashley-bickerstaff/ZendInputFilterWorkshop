@@ -1,0 +1,13 @@
+{
+    "name": "pawcode/zend-inputfilter-workshop",
+    "description": "A workshop to get started with Zend Validators, Filters and InputFilters",
+    "require": {
+        "zendframework/zend-inputfilter": "^2.7",
+        "phpunit/phpunit": "^5.7"
+    },
+    "authors": [
+        {
+            "name": "Ashley Bickerstaff"
+        }
+    ]
+}
