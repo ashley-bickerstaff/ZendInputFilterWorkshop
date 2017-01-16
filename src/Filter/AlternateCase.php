@@ -10,8 +10,9 @@ use Zend\Filter\AbstractFilter;
 class AlternateCase extends AbstractFilter
 {
 
-    /** @var bool Whether we should start with an upper case letter */
-    protected $startWithUpper = true;
+    protected $options = [
+        'startWithUpper' => true
+    ];
 
     /**
      * Transform a string so that each letter is in alternate case.
@@ -29,7 +30,7 @@ class AlternateCase extends AbstractFilter
         $j = 0;
         for ($i = 0; $i < $charCount; ++$i) {
 
-            $newString .= (($j + (int)!$this->startWithUpper) % 2 === 0)
+            $newString .= (($j + (int)!$this->options['startWithUpper']) % 2 === 0)
                             ? strtoupper($splitString[$i])
                             : strtolower($splitString[$i]);
 
