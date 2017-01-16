@@ -1,6 +1,6 @@
 <?php
 /**
- * Description
+ * Filter a string so that each letter of a string is alternate case.
  */
 
 namespace ZendInputFilterWorkshop\Filter;
@@ -10,18 +10,32 @@ use Zend\Filter\AbstractFilter;
 class AlternateCase extends AbstractFilter
 {
 
-    protected $startWithUpper = false;
+    /** @var bool Whether we should start with an upper case letter */
+    protected $startWithUpper = true;
 
+    /**
+     * Transform a string so that each letter is in alternate case.
+     *
+     * @param string $value
+     *
+     * @return string
+     */
     public function filter($value)
     {
         $splitString = str_split($value);
         $charCount = count($splitString);
 
         $newString = '';
+        $j = 0;
         for ($i = 0; $i < $charCount; ++$i) {
-            $newString .= (($i + (int)!$this->startWithUpper) % 2 === 0)
+
+            $newString .= (($j + (int)!$this->startWithUpper) % 2 === 0)
                             ? strtoupper($splitString[$i])
                             : strtolower($splitString[$i]);
+
+            if (ctype_alpha($splitString[$i])) {
+                ++$j;
+            }
         }
         return $newString;
     }
