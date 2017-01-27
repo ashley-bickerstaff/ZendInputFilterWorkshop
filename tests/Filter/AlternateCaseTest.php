@@ -1,19 +1,21 @@
 <?php
-/**
- * Description
- */
 
 namespace ZendInputFilterWorkshop\Filter;
 
 use PHPUnit\Framework\TestCase;
 
+/**
+ * Tests for the alternate case filter
+ */
 class AlternateCaseTest extends TestCase
 {
 
     /**
-     * @param $input
-     * @param $expected
-     * @param $startWithUpper
+     * Test the filter
+     *
+     * @param string $input
+     * @param string $expected
+     * @param bool   $startWithUpper
      *
      * @return void
      *
@@ -27,6 +29,11 @@ class AlternateCaseTest extends TestCase
         $this->assertSame($expected, $filter->filter($input));
     }
 
+    /**
+     * Data provider for the filter test
+     *
+     * @return array
+     */
     public function testFilterDataProvider()
     {
         return [
@@ -39,8 +46,17 @@ class AlternateCaseTest extends TestCase
                 'red',
                 'rEd',
                 false
+            ],
+            [
+                'r3d',
+                'r3D',
+                false
+            ],
+            [
+                'r3d',
+                'R3d',
+                true
             ]
         ];
     }
-
 }
